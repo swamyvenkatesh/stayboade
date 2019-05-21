@@ -9,43 +9,31 @@ from models import TodoData
 def index(request):
     """ Home Page View"""
     if request.method == "POST":
-        task = request.POST.get('task')
-        print "before creating "
+        task = request.POST.get('task')        
         data = TodoData.objects.create(title=str(task))
 
-        print "after creating todo"
-        data = TodoData.objects.all()
-        return render(request, 'home.html', {'todo_list':data})
+        todo_data = TodoData.objects.all()
+        return render(request, 'home.html', {'todo_list':todo_data})
         
     else:
-        print "home else method"
         data = TodoData.objects.all()
         return render(request, 'home.html', {'todo_list':data})
 
 def todo_task(request,title):
     """ Todo Detailed view """
-    print title, "====================="
+
     data = TodoData.objects.filter(title__contains=str(title))  
     print data
     title = ''
     desc = ''
     for dd in data:
         title = dd.title
-        desc = dd.description  
-
-    # if request.method == "POST":
-    #     print "post method"
-    #     print request.POST
-    #     # return HttpResponseRedirect("/todo/home/")
-    #     return HttpResponse("completed")
-    # else:
-    #     pass  
+        desc = dd.description    
         
     return render(request, 'update.html', {'title':title, 'desc':desc})
 
 def todo_update(request):
     """ Update view """
-    print "update view"
     if request.method == "GET":
         print "post method"
         print request.POST
@@ -54,8 +42,3 @@ def todo_update(request):
     else:
         print "else method"
         pass
-
-
-
-# mylife@1991
-# swamy
