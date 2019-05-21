@@ -1,0 +1,60 @@
+{%extends 'index.html'%}
+
+
+{%block content%}
+
+
+		<div class="form-group">
+	      	<h1>To-Do <small>List</small></h1>
+	      	<div class="row">
+	      		<form role="form" method="post" action="{% url 'home'%}">
+	      		{% csrf_token %}
+	      			<div class="col-md-8">	      			
+		        		<input type="text"  id="details" class="form-control" placeholder="Enter here .." name="task" value="" required="required">
+		    	
+		      		</div>
+		      		<div class="col-md-4">
+		      			<button type="submit"  id="adddeta" class="btn btn-primary">Add</button>
+		      		</div> 
+	      		</form>
+	      		
+	      	</div>
+		    
+        </div>
+        <div></div>
+	    <ul class="list-unstyled" id="todo">	    	
+	    	{% for todo in todo_list %}
+	    		<li><a href="{% url 'todo_detail' todo.title %}">{{todo.title}}</a>
+	    		<span class="close">x</span></li>
+
+
+	    	{% endfor %}
+	    </ul>
+	    <!-- <script>
+	    	$(document).ready(function(){
+		    	$('#adddeta').click(function(){
+
+		    		// alert("hello")
+		    		debugger;
+
+		    	var adddet=$("#details").val()
+
+		    	if (adddet==""){
+		    		alert("please enter the title")
+		    	}
+		    	else{
+		    		console.log("success")
+		    	}
+		    	});
+	    });
+
+
+	    </script> -->
+
+
+
+
+
+
+{%endblock%}
+
