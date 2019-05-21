@@ -15,9 +15,9 @@
       <label for="inputPassword4">Status</label>
       <select id="inputState" class="form-control" name="status">
         <option selected>Status...</option>
-        <option>Pending</option>
-        <option>InProgress</option>
-        <option>Complete</option>
+        <option value="Pending">Pending</option>
+        <option value="InProgress">InProgress</option>
+        <option value="Completed">Completed</option>
       </select>
       
     </div>
@@ -25,7 +25,7 @@
   <div class="form-row">
     <div class="form-group col-md-10">
       <label for="inputAddress">Description</label>
-      <input class="form-control" name="desc" placeholder="Enter description here . .">
+      <input class="form-control" name="desc" placeholder="Enter description here . ." value="" id="desc">
       	
       </input>
 
@@ -49,13 +49,17 @@
 
   
   $("#update").click(function(){
-    document.forms(0).submit();
+    //document.forms(0).submit();
     var title = $("#title").val()
+    var status1 = $("#inputState").val()
+    var desc1 = $("#desc").val()
 
     $.ajax({
         type:"GET",
         url:"/todo/update/",
-        data:{"title":title},
+        data:{"title":title, 
+              'status':status1, 
+              'desc':desc1},
         success:function(data)
         {console.log("success");
       }

@@ -30,9 +30,9 @@ pip install django
 	- Admin can see all todo tasks
 	- Admin can search with title 
 	- Filtering also included 
-	- Admin have a facility to download the selected records as CSV file from select the 'Download CSV' option
+	- Admin have a facility to download the selected records as CSV file from actions by select the 'Download CSV' option 
 
 
 
 
-									** Thank You **
+						** Thank You **
